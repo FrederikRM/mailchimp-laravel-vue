@@ -17,10 +17,14 @@ import axios from "axios";
 export default {
     data() {
         return {
-            email: "", // Input field for email
+            email: "",
             response: null,
             status: "subscribed",
+            listId: import.meta.env.VITE_MAILCHIMP_AUDIENCE_ID,
         };
+    },
+    mounted() {
+        console.log(this.listId);
     },
     methods: {
         async testRoute() {
@@ -34,7 +38,7 @@ export default {
         async addToMailchimpList() {
             console.log(this.email, this.status);
             axios
-                .post("/lists/850bacf7f2/members", {
+                .post(`/lists/${this.listId}/members`, {
                     email: this.email,
                     status: this.status,
                 })
