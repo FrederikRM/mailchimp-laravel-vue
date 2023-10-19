@@ -23,9 +23,6 @@ export default {
             listId: import.meta.env.VITE_MAILCHIMP_AUDIENCE_ID,
         };
     },
-    mounted() {
-        console.log(this.listId);
-    },
     methods: {
         async testRoute() {
             try {
