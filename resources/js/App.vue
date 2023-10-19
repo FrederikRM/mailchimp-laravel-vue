@@ -20,7 +20,6 @@ export default {
             email: "", // Input field for email
             response: null,
             status: "subscribed",
-
         };
     },
     methods: {
@@ -33,11 +32,12 @@ export default {
             }
         },
         async addToMailchimpList() {
-            console.log(this.email, this.status)
-            axios.post("/lists/850bacf7f2/members", {
-                email: this.email,
-                status: this.status,
-            })
+            console.log(this.email, this.status);
+            axios
+                .post("/lists/850bacf7f2/members", {
+                    email: this.email,
+                    status: this.status,
+                })
                 .then((response) => {
                     console.log(response.data);
                     console.log(this.email, this.status);
@@ -49,7 +49,10 @@ export default {
         async pingMailchimp() {
             try {
                 const response = await axios.get("ping");
-                console.log("health_status: Everything's Chimpy!", response.data);
+                console.log(
+                    "health_status: Everything's Chimpy!",
+                    response.data
+                );
             } catch (error) {
                 console.error("Error pinging Mailchimp:", error);
             }
