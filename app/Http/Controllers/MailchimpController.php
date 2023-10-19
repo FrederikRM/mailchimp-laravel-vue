@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use MailchimpMarketing\ApiClient; // Import the Mailchimp SDK
-use Illuminate\Support\Facades\Http;
+
 
 class MailchimpController extends Controller
 {
@@ -23,7 +22,7 @@ class MailchimpController extends Controller
             "email_address" => $email,
             "status" => $status,
         ]);
-        print_r($response);   // Mailchimp API integration logic here
+        print_r($response);
 
         return response()->json(['message' => 'Subscribed to Mailchimp']);
     }
